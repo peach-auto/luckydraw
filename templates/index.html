@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>今天吃什么？</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>🍳 今天吃什么？</h1>
+      <p>选好时段和人数，一键决定这一餐</p>
+    </header>
+
+    <section class="panel">
+      <h2>1. 用餐时段</h2>
+      <div class="options">
+        <label class="option">
+          <input type="radio" name="period" value="早">
+          <span class="icon">🌅</span><span>早</span>
+        </label>
+        <label class="option">
+          <input type="radio" name="period" value="中">
+          <span class="icon">☀️</span><span>中</span>
+        </label>
+        <label class="option">
+          <input type="radio" name="period" value="晚">
+          <span class="icon">🌙</span><span>晚</span>
+        </label>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>2. 参与人数</h2>
+      <div class="options">
+        <label class="option">
+          <input type="radio" name="mode" value="单人">
+          <span class="icon">🙋</span><span>单人</span>
+        </label>
+        <label class="option">
+          <input type="radio" name="mode" value="双人">
+          <span class="icon">👫</span><span>双人</span>
+        </label>
+      </div>
+    </section>
+
+    <div class="actions">
+      <button id="draw-btn" disabled>🎲 开始抽奖</button>
+      <button id="reset-btn" class="secondary">重置</button>
+    </div>
+    <p id="hint" class="hint">请先选择用餐时段和参与人数</p>
+
+    <section id="result" class="panel result hidden">
+      <span id="result-tag" class="tag"></span>
+      <h2 id="result-name"></h2>
+      <p id="result-meta" class="meta"></p>
+      <p id="result-extra"></p>
+      <p class="recipes-title">做法（点菜名展开）</p>
+      <div id="result-recipes" class="recipes"></div>
+    </section>
+  </main>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

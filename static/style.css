@@ -1,0 +1,141 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+  background: linear-gradient(135deg, #ffecd2, #fcb69f);
+  display: flex;
+  justify-content: center;
+  padding: 40px 16px;
+}
+
+.container { width: 100%; max-width: 520px; }
+
+header { text-align: center; margin-bottom: 24px; }
+header h1 { font-size: 28px; color: #5a3e2b; }
+header p { color: #7a5c44; margin-top: 6px; }
+
+.panel {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 14px rgba(90, 62, 43, 0.12);
+}
+
+.panel h2 { font-size: 16px; color: #5a3e2b; margin-bottom: 12px; }
+
+.options { display: flex; gap: 12px; }
+
+.option {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 8px;
+  border: 2px solid #eadfce;
+  border-radius: 12px;
+  background: #fffdf8;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.option input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.option:hover { border-color: #e8a15f; }
+.option:has(input:focus-visible) { outline: 3px solid #e88d3a; outline-offset: 2px; }
+.option:has(input:checked) {
+  border-color: #e88d3a;
+  background: #fff3e6;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(232, 141, 58, 0.25);
+}
+
+.option .icon { font-size: 26px; }
+.option span:last-child { font-weight: 600; color: #5a3e2b; }
+
+.actions { display: flex; gap: 12px; margin: 20px 0 8px; }
+
+button {
+  flex: 1;
+  padding: 14px;
+  font-size: 17px;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+#draw-btn { background: #e88d3a; color: #fff; }
+#draw-btn:hover:not(:disabled) { background: #d97b28; transform: translateY(-1px); }
+#draw-btn:disabled { background: #cbb9a8; cursor: not-allowed; }
+
+.secondary { background: #fff; color: #8a6a4f; border: 2px solid #d8c6b2; }
+.secondary:hover { background: #f7efe5; }
+
+.hint { text-align: center; color: #9b8471; font-size: 14px; min-height: 20px; }
+.hint.ready { color: #2e7d32; font-weight: 600; }
+.hint.error { color: #c62828; font-weight: 600; }
+
+.result h2 { color: #d35400; font-size: 22px; margin: 8px 0; }
+.tag {
+  display: inline-block;
+  background: #fdeedc;
+  color: #b06a2c;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+.meta { color: #7a5c44; font-size: 14px; }
+#result-extra { color: #8a7358; font-size: 14px; margin-top: 8px; }
+
+.recipes-title { margin-top: 16px; font-size: 14px; font-weight: 600; color: #b06a2c; }
+.recipes { margin-top: 8px; }
+
+.recipe {
+  margin-bottom: 8px;
+  border: 1px solid #eadfce;
+  border-radius: 10px;
+  background: #fffdf8;
+  overflow: hidden;
+}
+
+.recipe summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  font-weight: 600;
+  color: #5a3e2b;
+  cursor: pointer;
+  list-style: none;
+}
+.recipe summary::-webkit-details-marker { display: none; }
+.recipe summary::after { content: "展开"; font-size: 12px; font-weight: 400; color: #b06a2c; }
+.recipe[open] summary::after { content: "收起"; }
+.recipe[open] summary { border-bottom: 1px dashed #eadfce; }
+
+.recipe-body { padding: 10px 12px 12px; font-size: 14px; line-height: 1.7; color: #4a3524; }
+.recipe-row { margin-bottom: 8px; }
+.recipe-row:last-child { margin-bottom: 0; }
+.recipe-row .label { display: inline-block; margin-bottom: 2px; font-weight: 600; color: #b06a2c; }
+.recipe-row p { margin: 2px 0; }
+
+@keyframes pop {
+  0% { transform: scale(0.96); opacity: 0.4; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.result.pop { animation: pop 0.25s ease-out; }
+
+.hidden { display: none; }
